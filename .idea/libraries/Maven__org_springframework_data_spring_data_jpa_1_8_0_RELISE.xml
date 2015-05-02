@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.springframework.data:spring-data-jpa:1.8.0.RELISE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELISE/spring-data-jpa-1.8.0.RELISE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELISE/spring-data-jpa-1.8.0.RELISE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-jpa/1.8.0.RELISE/spring-data-jpa-1.8.0.RELISE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
