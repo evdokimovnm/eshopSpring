@@ -17,7 +17,7 @@
 
     <mvc:annotation-driven/>
 
-    <mvc:view-controller path="/" view-name="productAll" />
+    <mvc:view-controller path="/" view-name="welcome" />
 
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

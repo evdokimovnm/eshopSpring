@@ -23,5 +23,16 @@
       <foreign-key name="products_ibfk_1" columns="type_id" ref-table="product_type" ref-schema="" ref-catalog="eshop_spring_db" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="id_UNIQUE" unique="true" columns="id"/>
     </table>
+    <table name="users" schema="" catalog="eshop_spring_db" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="email_UNIQUE" unique="true" columns="email"/>
+      <index name="id_UNIQUE" unique="true" columns="id"/>
+      <index name="login_UNIQUE" unique="true" columns="login"/>
+    </table>
   </data-source>
 </component>

@@ -4,9 +4,11 @@ import net.evdokimov.eshopSpring.model.Product;
 import net.evdokimov.eshopSpring.repository.ProductRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import java.util.List;
 
 @Repository
@@ -35,13 +37,11 @@ public class JpaProductRepository implements ProductRepository {
     public Product saveAndFlush(Product product) {
         if (product.getId() == null) {
             this.em.persist(product);
+            return product;
         }
         else {
-            this.em.merge(product);
+            return this.em.merge(product);
         }
-        return (Product)em.createQuery("SELECT p FROM  Product p WHERE p.name=:name")
-                .setParameter("name", product.getName())
-                .getSingleResult();
     }
 
     @Override

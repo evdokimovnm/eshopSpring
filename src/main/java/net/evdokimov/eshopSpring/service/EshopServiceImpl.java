@@ -3,8 +3,10 @@ package net.evdokimov.eshopSpring.service;
 
 import net.evdokimov.eshopSpring.model.Product;
 import net.evdokimov.eshopSpring.model.ProductType;
+import net.evdokimov.eshopSpring.model.User;
 import net.evdokimov.eshopSpring.repository.ProductRepository;
 import net.evdokimov.eshopSpring.repository.ProductTypeRepository;
+import net.evdokimov.eshopSpring.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -17,11 +19,13 @@ public class EshopServiceImpl implements EshopService{
 
     private ProductRepository productRepository;
     private ProductTypeRepository productTypeRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public EshopServiceImpl(ProductRepository productRepository, ProductTypeRepository productTypeRepository) {
+    public EshopServiceImpl(ProductRepository productRepository, ProductTypeRepository productTypeRepository, UserRepository userRepository) {
         this.productRepository = productRepository;
         this.productTypeRepository = productTypeRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -58,5 +62,17 @@ public class EshopServiceImpl implements EshopService{
     @Transactional(readOnly = true)
     public List<ProductType> findTypes() throws DataAccessException{
         return productTypeRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public User saveUser(User user) throws DataAccessException {
+        return userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    @Transactional
+    public User findUserByLoginAndPassword(String login, String password) {
+        return userRepository.findByLoginAndPassword(login, password);
     }
 }

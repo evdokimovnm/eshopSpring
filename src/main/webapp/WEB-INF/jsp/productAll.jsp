@@ -1,3 +1,5 @@
+<%@ page import="net.evdokimov.eshopSpring.model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
     <head>
@@ -5,19 +7,19 @@
     </head>
 
     <body>
-        <%--<p align="right">
+        <p align="right">
             <c:if test="${empty user}">
                 <br><a href="/login.jsp?ref=productAll.do">Login</a>
-                <br><a href="/registration.jsp">Registration</a>
+                <br><a href="/registration">Registration</a>
             </c:if>
             <c:if test="${not empty user}">
                 <br/>You are ${user.login}!
                 <br><a href="/userLogout.do?ref=productAll.do">Logout</a>
             </c:if>
         </p>
-        <hr/>
-        <br/>
-        <%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
+        <hr>
+        <br>
+        <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
         <h1 align="center">Manager version</h1>
         <%}%>--%>
         <br/><h2 align="center">ALL PRODUCTS PAGE</h2>
@@ -26,7 +28,7 @@
         <ul>
             <c:forEach var="productTypeList" items="${productTypeList}">
                 <li>
-                    <a href="/productChoose.do?type_id=${productTypeList.id}">${productTypeList.type}</a>
+                    <a href="/productChoose/${productTypeList.id}">${productTypeList.type}</a>
                 </li>
             </c:forEach>
         </ul>
@@ -34,13 +36,15 @@
         <ul>
             <c:forEach var="productList" items="${productList}">
                 <li>
-                    <a href="/product.do?id=${productList.id}">${productList.name}</a>
+                    <a href="/product/${productList.id}">${productList.name}</a>
                     <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
                     <a href="/productRemove.do?id=${productList.id}"> X</a>
                     <%}%>--%>
                 </li>
             </c:forEach>
         </ul>
+
+
 
 
         <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>

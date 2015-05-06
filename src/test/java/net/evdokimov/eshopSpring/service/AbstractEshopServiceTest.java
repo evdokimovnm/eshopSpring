@@ -1,9 +1,9 @@
 package net.evdokimov.eshopSpring.service;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import net.evdokimov.eshopSpring.model.Product;
 import net.evdokimov.eshopSpring.model.ProductType;
-import org.hibernate.validator.internal.util.logging.Log;
+import net.evdokimov.eshopSpring.model.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,7 +39,7 @@ public abstract class AbstractEshopServiceTest {
     @Test
     public void shouldSaveProduct() {
         List<ProductType> types = this.eshopService.findTypes();
-        int productType = types.indexOf(new ProductType("Animals"));
+        int productType = types.indexOf(new ProductType("animals"));
         Product product = new Product();
         product.setName("dog");
         product.setType(types.get(productType));
@@ -57,4 +57,22 @@ public abstract class AbstractEshopServiceTest {
         List<ProductType> types = this.eshopService.findTypes();
         assertThat(types.size()).isEqualTo(2);
     }
+
+    @Test
+    public void shouldSaveUser() {
+        User userForSave = new User();
+        userForSave.setLogin("Bred");
+        userForSave.setEmail("bred@ya.ru");
+        userForSave.setPassword("1234");
+        User user = this.eshopService.saveUser(userForSave);
+        System.out.println(user);
+        assertThat(user.getId()).isNotEqualTo(0);
+    }
+
+    @Test
+    public void shouldFinedUserByLoginAndEmail() {
+        User user = this.eshopService.findUserByLoginAndPassword("Sara", "1234");
+        assertThat(user.getId()).isEqualTo(2);
+    }
+
 }
