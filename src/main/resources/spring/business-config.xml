@@ -49,7 +49,7 @@
               p:entityManagerFactory-ref="entityManagerFactory"/>
 
         <!--
-            Post-processor to perform exception translation on @Repository classes (from native
+            Post-processor to perform exceptions translation on @Repository classes (from native
             exceptions such as JPA PersistenceExceptions to Spring's DataAccessException hierarchy).
         -->
         <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>

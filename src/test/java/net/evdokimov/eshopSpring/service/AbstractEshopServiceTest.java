@@ -4,6 +4,8 @@ package net.evdokimov.eshopSpring.service;
 import net.evdokimov.eshopSpring.model.Product;
 import net.evdokimov.eshopSpring.model.ProductType;
 import net.evdokimov.eshopSpring.model.User;
+import net.evdokimov.eshopSpring.repository.exceptions.LoginExistException;
+import net.evdokimov.eshopSpring.repository.exceptions.NotSuchElementException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,7 +61,7 @@ public abstract class AbstractEshopServiceTest {
     }
 
     @Test
-    public void shouldSaveUser() {
+    public void shouldSaveUser() throws LoginExistException {
         User userForSave = new User();
         userForSave.setLogin("Bred");
         userForSave.setEmail("bred@ya.ru");
@@ -70,7 +72,7 @@ public abstract class AbstractEshopServiceTest {
     }
 
     @Test
-    public void shouldFinedUserByLoginAndEmail() {
+    public void shouldFinedUserByLoginAndEmail() throws NotSuchElementException {
         User user = this.eshopService.findUserByLoginAndPassword("Sara", "1234");
         assertThat(user.getId()).isEqualTo(2);
     }

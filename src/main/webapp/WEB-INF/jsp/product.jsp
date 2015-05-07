@@ -4,12 +4,12 @@
     <body>
         <p align="right">
             <c:if test="${empty user}">
-                <br><a href="/login.jsp?ref=product.do&id=${product.id}">Login</a>
-                <br><a href="/registration.jsp">Registration</a>
+                <br><a href="/login/product&${product.id}">Login</a>
+                <br><a href="/registration">Registration</a>
             </c:if>
             <c:if test="${not empty user}">
                 <br/>You are ${user.login}!
-                <br/><a href="/userLogout.do?ref=product.do&id=${product.id}">Logout</a>
+                <br/><a href="/logout/product&${product.id}">Logout</a>
             </c:if>
         </p>
         <hr/>
@@ -24,9 +24,7 @@
         <br>name: ${product.name}
         <br><a href="/productAddToBucket.do?id=${product.id}">Add to bucket</a>
         </p>
-        <br/>
-        <br/>
-        <br/>
+        <br><br><br>
         <b>Products in bucket</b>
         <ul>
             <c:forEach var="productInBucket" items="${productsInBucket}">

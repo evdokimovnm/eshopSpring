@@ -9,12 +9,12 @@
     <body>
         <p align="right">
             <c:if test="${empty user}">
-                <br><a href="/login.jsp?ref=productAll.do">Login</a>
+                <br><a href="/login/productAll">Login</a>
                 <br><a href="/registration">Registration</a>
             </c:if>
             <c:if test="${not empty user}">
                 <br/>You are ${user.login}!
-                <br><a href="/userLogout.do?ref=productAll.do">Logout</a>
+                <br><a href="/logout/productAll">Logout</a>
             </c:if>
         </p>
         <hr>
@@ -24,7 +24,7 @@
         <%}%>--%>
         <br/><h2 align="center">ALL PRODUCTS PAGE</h2>
 
-        <br/><b>Choose type of product for getting list with this type</b>
+        <br/><h3>Choose type of product for getting list with this type</h3>
         <ul>
             <c:forEach var="productTypeList" items="${productTypeList}">
                 <li>
@@ -32,7 +32,7 @@
                 </li>
             </c:forEach>
         </ul>
-        <br/><h2>ALL PRODUCTS LIST</h2>
+        <br/><h3>ALL PRODUCTS LIST</h3>
         <ul>
             <c:forEach var="productList" items="${productList}">
                 <li>

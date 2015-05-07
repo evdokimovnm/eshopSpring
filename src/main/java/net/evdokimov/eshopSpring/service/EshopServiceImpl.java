@@ -7,6 +7,8 @@ import net.evdokimov.eshopSpring.model.User;
 import net.evdokimov.eshopSpring.repository.ProductRepository;
 import net.evdokimov.eshopSpring.repository.ProductTypeRepository;
 import net.evdokimov.eshopSpring.repository.UserRepository;
+import net.evdokimov.eshopSpring.repository.exceptions.LoginExistException;
+import net.evdokimov.eshopSpring.repository.exceptions.NotSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -66,13 +68,13 @@ public class EshopServiceImpl implements EshopService{
 
     @Override
     @Transactional
-    public User saveUser(User user) throws DataAccessException {
+    public User saveUser(User user) throws LoginExistException {
         return userRepository.saveAndFlush(user);
     }
 
     @Override
     @Transactional
-    public User findUserByLoginAndPassword(String login, String password) {
+    public User findUserByLoginAndPassword(String login, String password) throws NotSuchElementException {
         return userRepository.findByLoginAndPassword(login, password);
     }
 }

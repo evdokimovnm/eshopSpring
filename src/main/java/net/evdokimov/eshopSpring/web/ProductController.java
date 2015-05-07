@@ -1,27 +1,24 @@
 package net.evdokimov.eshopSpring.web;
 
-import net.evdokimov.eshopSpring.model.User;
+
 import net.evdokimov.eshopSpring.service.EshopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+
 
 
 @Controller
-public class EshopController {
+public class ProductController {
 
     private final EshopService eshopService;
 
     @Autowired
-    public EshopController(EshopService eshopService) {
+    public ProductController(EshopService eshopService) {
         this.eshopService = eshopService;
     }
 
@@ -45,21 +42,9 @@ public class EshopController {
         return "productsChosenList";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String showRegistrationForm (Model model) {
-        model.addAttribute("user", new User());
-        return "registration";
-    }
+//    @RequestMapping(value = "/productAddToBucket/{id}", method = RequestMethod.GET)
+//    pub
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String doRegistration (@Valid User user, BindingResult result, Model model, HttpSession session) {
-        if (result.hasErrors()) {
-            return "registration";
-        }
-        User userForSave = this.eshopService.saveUser(user);
-        session.setAttribute("user", userForSave);
-        return "redirect:/productAll";
-    }
 
 
 }
