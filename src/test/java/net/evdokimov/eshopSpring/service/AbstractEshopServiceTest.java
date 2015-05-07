@@ -61,6 +61,14 @@ public abstract class AbstractEshopServiceTest {
     }
 
     @Test
+    public void shouldFinedType() {
+        ProductType type = this.eshopService.findType("animals");
+        System.out.println(type);
+        assertThat(type.getId()).isNotEqualTo(0);
+    }
+
+
+    @Test
     public void shouldSaveUser() throws LoginExistException {
         User userForSave = new User();
         userForSave.setLogin("Bred");

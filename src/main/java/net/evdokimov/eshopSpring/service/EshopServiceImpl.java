@@ -68,6 +68,12 @@ public class EshopServiceImpl implements EshopService{
 
     @Override
     @Transactional
+    public ProductType findType(String type) {
+        return productTypeRepository.findByType(type);
+    }
+
+    @Override
+    @Transactional
     public User saveUser(User user) throws LoginExistException {
         return userRepository.saveAndFlush(user);
     }

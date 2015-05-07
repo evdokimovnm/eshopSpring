@@ -19,9 +19,13 @@
         </p>
         <hr>
         <br>
-        <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
+        <%
+            if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) {
+        %>
         <h1 align="center">Manager version</h1>
-        <%}%>--%>
+        <%
+            }
+        %>
         <br/><h2 align="center">ALL PRODUCTS PAGE</h2>
 
         <br/><h3>Choose type of product for getting list with this type</h3>
@@ -37,19 +41,22 @@
             <c:forEach var="productList" items="${productList}">
                 <li>
                     <a href="/product/${productList.id}">${productList.name}</a>
-                    <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
-                    <a href="/productRemove.do?id=${productList.id}"> X</a>
-                    <%}%>--%>
+                    <%
+                        if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) {
+                    %>
+                    <a href="/productRemove/${productList.id}"> X</a>
+                    <%
+                        }
+                    %>
                 </li>
             </c:forEach>
         </ul>
 
 
 
-
-        <%--<%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
+        <%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
         <br/><b>Add new product:</b>
-        <form action="/productInsertNew.do" method="post">
+        <form action="/productAdd" method="post">
             <br/>Product name:<input type="text" name="productName">
             <br/>Product type:
                 <select name="productType" size="1">
@@ -59,7 +66,7 @@
                 </select>
             <br/><input type="submit" value="Add">
         </form>
-        <%}%>--%>
+        <%}%>
     </body>
 </html>
 

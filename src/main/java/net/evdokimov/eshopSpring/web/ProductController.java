@@ -2,14 +2,17 @@ package net.evdokimov.eshopSpring.web;
 
 
 import net.evdokimov.eshopSpring.model.Product;
+import net.evdokimov.eshopSpring.model.ProductType;
 import net.evdokimov.eshopSpring.service.EshopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -47,6 +50,7 @@ public class ProductController {
     @RequestMapping(value = "/productChoose/{productTypeListId}", method = RequestMethod.GET)
     public String showProductTypeList (@PathVariable("productTypeListId") int productTypeListId, Model model) {
         model.addAttribute("productList", eshopService.findProductByTypeId(productTypeListId));
+        model.addAttribute("from", productTypeListId);
         return "productsChosenList";
     }
 
@@ -93,6 +97,25 @@ public class ProductController {
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public String showBucket () {
         return "bucket";
+    }
+
+
+    @RequestMapping(value = "/productRemove/{id}", method = RequestMethod.GET)
+    public String doRemoveProduct(@PathVariable("id") int id) {
+        eshopService.deleteProduct(id);
+        return "redirect:/productAll";
+    }
+
+    @RequestMapping(value = "/productAdd", method = RequestMethod.POST)
+    public String doAddProduct(HttpServletRequest request) {
+        String productName = request.getParameter("productName");
+        String productType = request.getParameter("productType");
+        ProductType productTypeForSave = eshopService.findType(productType);
+        Product productForSave = new Product();
+        productForSave.setName(productName);
+        productForSave.setType(productTypeForSave);
+        eshopService.saveProduct(productForSave);
+        return "redirect:/productAll";
     }
 
 

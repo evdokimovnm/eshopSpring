@@ -24,6 +24,8 @@ public interface EshopService {
 
     List<ProductType> findTypes() throws DataAccessException;
 
+    ProductType findType(String type);
+
     User saveUser(User user) throws DataAccessException, LoginExistException;
 
     User findUserByLoginAndPassword(String login, String password) throws NotSuchElementException;

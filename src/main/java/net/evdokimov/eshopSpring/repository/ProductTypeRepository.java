@@ -6,4 +6,6 @@ import java.util.List;
 public interface ProductTypeRepository {
 
     List<ProductType> findAll();
+
+    ProductType findByType(String type);
 }

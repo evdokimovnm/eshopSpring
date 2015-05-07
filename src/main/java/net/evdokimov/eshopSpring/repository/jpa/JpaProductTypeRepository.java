@@ -19,4 +19,11 @@ public class JpaProductTypeRepository implements ProductTypeRepository {
     public List<ProductType> findAll() {
         return (List<ProductType>)em.createQuery("SELECT pt FROM ProductType pt").getResultList();
     }
+
+    @Override
+    public ProductType findByType(String type) {
+        return (ProductType)em.createQuery("SELECT pt FROM ProductType pt WHERE pt.type=:type")
+                .setParameter("type", type)
+                .getSingleResult();
+    }
 }
