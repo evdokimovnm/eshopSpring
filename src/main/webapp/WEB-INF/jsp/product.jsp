@@ -22,22 +22,22 @@
         <br>id: ${product.id} <%--EL=Expression Language--%><%--== request.getAttribute("product").getId()--%>
        <%-- <br>id: <%=((Product)request.getAttribute("product")).getId()%>--%> <%--Scriplet--%>
         <br>name: ${product.name}
-        <br><a href="/productAddToBucket.do?id=${product.id}">Add to bucket</a>
+        <br><a href="/productAddToBucket/${product.id}">Add to bucket</a>
         </p>
         <br><br><br>
         <b>Products in bucket</b>
         <ul>
             <c:forEach var="productInBucket" items="${productsInBucket}">
                 <li>
-                    <a href="/product.do?id=${productInBucket.key.id}">${productInBucket.key.name}</a>: =
+                    <a href="/product/${productInBucket.key.id}">${productInBucket.key.name}</a>: =
                         ${productInBucket.value}
-                    <a href="/productRemoveFromBucket.do?id=${productInBucket.key.id}&ref=${product.id}">X</a>
+                    <a href="/productRemoveFromBucket/${productInBucket.key.id}/product&${product.id}">X</a>
                 </li>
             </c:forEach>
         </ul>
     <c:if test="${not empty productsInBucket}">
-        <br><a href="bucket.jsp">Buy</a>
-        <br/><a href="/productRemoveAllFromBucket.do?id=${product.id}">Clean bucket</a>
+        <br><a href="/bucket">Buy</a>
+        <br/><a href="/productRemoveAllFromBucket/product&${product.id}">Clean bucket</a>
     </c:if>
     </body>
 </html>
