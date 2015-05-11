@@ -56,17 +56,17 @@
     </beans>
 
 
-    <beans profile="jpa">
-        <!--
+    <!--<beans profile="jpa">
+        &lt;!&ndash;
             Loads JPA beans
             Will automatically be transactional due to @Transactional.
             EntityManager will be auto-injected due to @PersistenceContext.
             PersistenceExceptions will be auto-translated due to @Repository.
-        -->
+        &ndash;&gt;
         <context:component-scan base-package="net.evdokimov.eshopSpring.repository.jpa"/>
-    </beans>
-
-    <!--<beans profile="spring-data-jpa">
-        <jpa:repositories base-package="net.evdokimov.eshopSpring.repository.springdatajpa"/>
     </beans>-->
+
+    <beans profile="spring-data-jpa">
+        <jpa:repositories base-package="net.evdokimov.eshopSpring.repository.springdatajpa"/>
+    </beans>
 </beans>

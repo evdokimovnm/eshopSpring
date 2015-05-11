@@ -9,7 +9,6 @@
                             http://www.springframework.org/schema/mvc
                             http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <!--<import resource="mvc-view-config.xml"/>-->
     <!--
         - POJOs labeled with the @Controller and @Service annotations are auto-detected.
     -->
