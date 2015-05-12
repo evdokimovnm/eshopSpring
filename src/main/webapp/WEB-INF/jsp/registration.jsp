@@ -7,7 +7,7 @@
 <head>
     <title>Registration page</title>
 </head>
-    <body>
+<body>
     <c:if test="${empty regState}">
         <br><h2 align="center">Registration page</h2>
         <c:if test="${loginOrEmailExist}">
@@ -51,6 +51,5 @@
             <br> You may go to <a href="/productAll">ALL PRODUCTS PAGE</a>
         </p>
     </c:if>
-
-    </body>
+</body>
 </html>
