@@ -10,7 +10,7 @@ public class ProductType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "type")
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Product> products;
 
     public Integer getId() {

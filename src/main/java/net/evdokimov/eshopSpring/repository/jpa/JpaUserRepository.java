@@ -34,15 +34,11 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public User saveAndFlush(User user) throws LoginExistException {
-        /*try {*/
-            if(user.getId() == null) {
-                this.em.persist(user);
-                return user;
-            } else {
-                return this.em.merge(user);
-            }
-        /*} catch (Exception e) {
-            throw new LoginExistException("Such login or email already exist");
-        }*/
+        if (user.getId() == null) {
+            this.em.persist(user);
+            return user;
+        } else {
+            return this.em.merge(user);
+        }
     }
 }

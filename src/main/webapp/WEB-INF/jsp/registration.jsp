@@ -7,7 +7,6 @@
 <head>
     <title>Registration page</title>
 </head>
-
     <body>
     <c:if test="${empty regState}">
         <br><h2 align="center">Registration page</h2>
@@ -25,7 +24,7 @@
                 <tr>
                     <td>Login:</td>
                     <td><form:input path="login"/></td>
-                    <td><form:errors path="login"/> </td>
+                    <td><form:errors path="login"/></td>
                 </tr>
                 <tr>
                     <td>Password:</td>

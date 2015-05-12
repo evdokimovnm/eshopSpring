@@ -35,7 +35,7 @@ public abstract class AbstractEshopServiceTest {
     @Test
     public void shouldFinedProductsByTypes() {
         List<Product> products = this.eshopService.findProductByTypeId(2);
-        assertThat(products.size()).isEqualTo(1);
+        assertThat(products.size()).isEqualTo(4);
     }
 
     @Test

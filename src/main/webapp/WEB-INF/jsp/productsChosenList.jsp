@@ -1,4 +1,3 @@
-<%@ page import="net.evdokimov.eshopSpring.model.User" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -19,18 +18,18 @@
     </p>
     <hr>
     <br>
-    <%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
-    <h1 align="center">Manager version</h1>
-    <%}%>
+    <c:if test="${user.role eq 'manager'}">
+        <h1 align="center">Manager version</h1>
+    </c:if>
     <br><h2>Chosen products</h2>
     <br>
     <ul>
         <c:forEach var="productList" items="${productList}">
             <li>
                 <a href="/product/${productList.id}">${productList.name}</a>
-                <%if (session.getAttribute("user") != null && ((User)session.getAttribute("user")).getRole().equals("manager")) { %>
+                <c:if test="${user.role eq 'manager'}">
                 <a href="/productRemove/${productList.id}"> X</a>
-                <%}%>
+                </c:if>
             </li>
         </c:forEach>
     </ul>
